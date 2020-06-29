@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="自定义EditText" />
+                    <FrameLayout
+                        android:background="#30000000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:background="#30ff0000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.example.plus2.day09.MaterialEditText
+                            android:id="@+id/view9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Username"
+                            app:useFloatingLabel="true"
+                            />
+                    </FrameLayout>
+
+                </LinearLayout>
+                <Button
+                    android:id="@+id/bt9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:text="切换" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="#1111"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Drawable怎么用？跟自定义view差不多，一般是为了重用" />
+
+                <com.example.plus2.day09.DrawableView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="用Evaluator做自定义动画" />
+
+                <Button
+                    android:id="@+id/bt8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:text="开始" />
+                <com.example.plus2.day08.CountryView
+                    android:id="@+id/view8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="#1111"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="用Evaluator对点对象做自定义轨迹的动画" />
+
+                <Button
+                    android:id="@+id/bt7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:text="开始" />
+                <com.example.plus2.day08.PointView
+                    android:id="@+id/view7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="用插值器做动画的运动规则:\n入场动画与加速动画" />
+
+                <Button
+                    android:id="@+id/bt6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:text="开始" />
+                <ImageView
+                    android:id="@+id/view6"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="100dp"
+                    android:src="@drawable/avatar_dog" />
+                <ImageView
+                    android:id="@+id/view6_2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="250dp"
+                    android:src="@drawable/avatar_dog" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="#1111"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="用Keyframe做中间有阻力的平移" />
+
+                <Button
+                    android:id="@+id/bt5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:text="开始" />
+                <ImageView
+                    android:id="@+id/view5"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="100dp"
+                    android:src="@drawable/avatar_dog" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="#1111"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="组合动画PropertyValuesHolder，同时执行" />
+
+                <Button
+                    android:id="@+id/bt4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:text="开始" />
+
+                <com.example.plus2.day08.CameraView
+                    android:id="@+id/view4"
+                    android:layout_width="match_parent"
+                    android:layout_height="600dp"
+                    android:src="@drawable/avatar_dog" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="#1111"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="组合动画AnimatorSet，先后执行" />
+
+                <Button
+                    android:id="@+id/bt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:text="开始" />
+
+                <com.example.plus2.day08.CameraView
+                    android:id="@+id/view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="600dp"
+                    android:src="@drawable/avatar_dog" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="自定义属性动画
+                    \nObjectAnimator.ofFloat()
+\n随半径逐渐变大的圆" />
+
+                <Button
+                    android:id="@+id/bt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:text="开始" />
+
+                <com.example.plus2.day08.CircleView
+                    android:layout_marginTop="100dp"
+                    android:id="@+id/view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="600dp"
+                    android:src="@drawable/avatar_dog" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="#1111">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="系统属性动画view.animate()
+\n.translationX(Utils.dp2px(200))
+\n.translationY(100)
+\n.rotation(180)
+\n.alpha(0.5f)
+\n.setStartDelay(1000)
+\n.start();
+" />
+
+                <Button
+                    android:id="@+id/bt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:text="开始" />
+
+                <ImageView
+                    android:id="@+id/view1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="140dp"
+                    android:src="@drawable/avatar_dog" />
+            </RelativeLayout>
+
+            <com.example.plus2.day07.CameraView
+                android:layout_width="match_parent"
+                android:layout_height="500dp" />
+
+            <com.example.plus2.day07.CustomView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="#1111" />
+
+            <com.example.plus2.day07.ImageTextView
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+            <com.example.plus2.day07.SportsView
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:background="#1111" />
+
+            <com.example.plus2.day06.AvatarView
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+            <com.example.plus2.day06.PieChart
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="#1111" />
+
+            <com.example.plus2.day06.Dashboard
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+            <com.example.plus2.day06.TestView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="#1111" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>
