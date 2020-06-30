@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +24,8 @@ import com.example.plus2.day08.CountryView;
 import com.example.plus2.day08.PointView;
 import com.example.plus2.day08.ProvinceUtils;
 import com.example.plus2.day09.MaterialEditText;
+import com.example.plus2.day11.TouchView;
+import com.example.plus2.day12.ScalableImageViewActivity;
 
 import java.util.TimerTask;
 
@@ -30,6 +34,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
+    @BindView(R.id.view10)
+    TouchView view10;
     @BindView(R.id.view9)
     MaterialEditText view9;
     @BindView(R.id.view8)
@@ -59,7 +65,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.bt1, R.id.bt2, R.id.bt3, R.id.bt4, R.id.bt5, R.id.bt6, R.id.bt7, R.id.bt8, R.id.bt9})
+    @OnClick({R.id.bt1, R.id.bt2, R.id.bt3, R.id.bt4, R.id.bt5, R.id.bt6, R.id.bt7, R.id.bt8
+            , R.id.bt9
+            , R.id.view10
+            , R.id.bt10
+    })
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt1:
@@ -151,6 +161,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.bt9:
                 view9.setUseFloatingLabel(!view9.getUseFloatingLabel());
                 break;
+            case R.id.view10:
+                Toast.makeText(MainActivity.this,"点击了",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.bt10:
+                Intent intent = new Intent(this, ScalableImageViewActivity.class);
+                startActivity(intent);
         }
     }
 

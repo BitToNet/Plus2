@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -16,44 +16,357 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="640dp"
+                android:background="#1111"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="双向滑动,惯性滑动" />
+                <Button
+                    android:id="@+id/bt10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:text="进入" />
+
+                <RelativeLayout
+                    android:layout_marginTop="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/avatar_dog"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="触摸反馈" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <com.example.plus2.day11.TouchView
+                        android:id="@+id/view10"
+                        android:background="@color/colorAccent"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="440dp"
+                android:background="#1111"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="布局3：自动折行的线性布局:自定义Layout；重写重新onMeasure()和onLayout()" />
+
+                <RelativeLayout
+                    android:layout_marginTop="60dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.example.plus2.day10.TagLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:text="200"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorPrimary"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="100"
+                            android:gravity="center"
+                            android:textSize="24sp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorAccent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="50"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorPrimary"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="100"
+                            android:gravity="center"
+                            android:textSize="24sp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorAccent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="50"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorPrimary"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="100"
+                            android:gravity="center"
+                            android:textSize="24sp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorAccent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="50"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorPrimary"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="100"
+                            android:gravity="center"
+                            android:textSize="24sp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorAccent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="50"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorPrimary"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="100"
+                            android:gravity="center"
+                            android:textSize="24sp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorAccent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="50"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorPrimary"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="100"
+                            android:gravity="center"
+                            android:textSize="24sp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorAccent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="50"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorPrimary"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="100"
+                            android:gravity="center"
+                            android:textSize="24sp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorAccent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="50"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorPrimary"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+                        <TextView
+                            android:text="100"
+                            android:gravity="center"
+                            android:textSize="24sp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@color/colorAccent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_dog"
+                            />
+
+                    </com.example.plus2.day10.TagLayout>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="布局2：对自定义view完全进行自定义尺寸计算，重新onMeasure():随圆的半径变化的布局" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <com.example.plus2.day10.CircleView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="#1111"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="布局1：继承已有的view，简单改写他们的尺寸，重新onMeasure():不管怎么定义宽高，让他们以最大的那个值相等" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <com.example.plus2.day10.SquareImageView
+                        android:layout_width="200dp"
+                        android:layout_height="300dp"
+                        android:scaleType="centerCrop"
+                        android:src="@color/colorAccent" />
+
+                    <View
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:background="@drawable/avatar_dog" />
+                </LinearLayout>
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="400dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:text="自定义EditText" />
+
                     <FrameLayout
-                        android:background="#30000000"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="#30000000">
+
                         <EditText
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            />
+                            android:layout_height="wrap_content" />
                     </FrameLayout>
 
                     <FrameLayout
-                        android:background="#30ff0000"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="#30ff0000">
+
                         <com.example.plus2.day09.MaterialEditText
                             android:id="@+id/view9"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Username"
-                            app:useFloatingLabel="true"
-                            />
+                            app:useFloatingLabel="true" />
                     </FrameLayout>
 
                 </LinearLayout>
+
                 <Button
                     android:id="@+id/bt9"
                     android:layout_width="wrap_content"
@@ -63,12 +376,10 @@
                     android:text="切换" />
             </RelativeLayout>
 
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:background="#1111"
-                >
+                android:background="#1111">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -78,14 +389,12 @@
 
                 <com.example.plus2.day09.DrawableView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    />
+                    android:layout_height="match_parent" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                >
+                android:layout_height="400dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -100,18 +409,17 @@
                     android:layout_alignParentRight="true"
                     android:layout_margin="10dp"
                     android:text="开始" />
+
                 <com.example.plus2.day08.CountryView
                     android:id="@+id/view8"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
+                    android:layout_height="wrap_content" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:background="#1111"
-                >
+                android:background="#1111">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -126,17 +434,16 @@
                     android:layout_alignParentRight="true"
                     android:layout_margin="10dp"
                     android:text="开始" />
+
                 <com.example.plus2.day08.PointView
                     android:id="@+id/view7"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
+                    android:layout_height="wrap_content" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                >
+                android:layout_height="400dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -151,12 +458,14 @@
                     android:layout_alignParentRight="true"
                     android:layout_margin="10dp"
                     android:text="开始" />
+
                 <ImageView
                     android:id="@+id/view6"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginTop="100dp"
                     android:src="@drawable/avatar_dog" />
+
                 <ImageView
                     android:id="@+id/view6_2"
                     android:layout_width="100dp"
@@ -168,8 +477,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:background="#1111"
-                >
+                android:background="#1111">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -184,6 +492,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_margin="10dp"
                     android:text="开始" />
+
                 <ImageView
                     android:id="@+id/view5"
                     android:layout_width="100dp"
@@ -195,8 +504,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:background="#1111"
-                >
+                android:background="#1111">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -222,8 +530,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:background="#1111"
-                >
+                android:background="#1111">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -248,8 +555,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                >
+                android:layout_height="400dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -268,10 +574,10 @@
                     android:text="开始" />
 
                 <com.example.plus2.day08.CircleView
-                    android:layout_marginTop="100dp"
                     android:id="@+id/view2"
                     android:layout_width="match_parent"
                     android:layout_height="600dp"
+                    android:layout_marginTop="100dp"
                     android:src="@drawable/avatar_dog" />
             </RelativeLayout>
 
@@ -345,7 +651,7 @@
                 android:layout_height="400dp"
                 android:background="#1111" />
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 
 
 </LinearLayout>
