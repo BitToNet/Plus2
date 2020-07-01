@@ -41,42 +41,42 @@ public class CameraView extends View {
         //绘制上半部分
         canvas.save();
         canvas.rotate(-20);
-        canvas.clipRect(-200,0,getWidth(),100+600/2+200);
+        canvas.clipRect(-200,0,getWidth(),100+500/2+200);
         canvas.rotate(20);
-        canvas.drawBitmap(Utils.getAvatar(getResources(), 600), 100, 100, paint);
+        canvas.drawBitmap(Utils.getAvatar(getResources(), 500), 100, 100, paint);
         canvas.restore();
         //绘制下半部分
         canvas.save();
-        canvas.translate(100 + 600 / 2, 100 + 600 / 2);
+        canvas.translate(100 + 500 / 2, 100 + 500 / 2);
         canvas.rotate(-20);
         camera.applyToCanvas(canvas);
-        canvas.clipRect(-600/2-200, 0, 600/2+200, 600/2+200);
+        canvas.clipRect(-500/2-200, 0, 500/2+200, 500/2+200);
         canvas.rotate(20);
-        canvas.translate(-(100 + 600 / 2), -(100 + 600 / 2));
-        canvas.drawBitmap(Utils.getAvatar(getResources(), 600), 100, 100, paint);
+        canvas.translate(-(100 + 500 / 2), -(100 + 500 / 2));
+        canvas.drawBitmap(Utils.getAvatar(getResources(), 500), 100, 100, paint);
         canvas.restore();
 
         //绘制对折效果，上面是自己写的，没有先移动到原点，所以要多做计算，所以最好还是统一移动到原点
         //绘制上半部分
         canvas.save();
         //裁剪
-        canvas.translate(100 + 600 / 2, 700 + 600 / 2);
+        canvas.translate(100 + 500 / 2, 700 + 500 / 2);
         canvas.rotate(-20);
-        canvas.clipRect(-600/2-200, -600/2-200, 600/2+200, 0);
+        canvas.clipRect(-500/2-200, -500/2-200, 500/2+200, 0);
         canvas.rotate(20);
-        canvas.translate(-(100 + 600 / 2), -(700 + 600 / 2));
-        canvas.drawBitmap(Utils.getAvatar(getResources(), 600), 100, 700, paint);
+        canvas.translate(-(100 + 500 / 2), -(700 + 500 / 2));
+        canvas.drawBitmap(Utils.getAvatar(getResources(), 500), 100, 700, paint);
         canvas.restore();
         //绘制下半部分
-        canvas.translate(100 + 600 / 2, 700 + 600 / 2);
+        canvas.translate(100 + 500 / 2, 700 + 500 / 2);
         canvas.rotate(-20);
         camera.applyToCanvas(canvas);
-        canvas.clipRect(-600/2-200, 0, 600/2+200, 600/2+200);
+        canvas.clipRect(-500/2-200, 0, 500/2+200, 500/2+200);
         //旋转
         canvas.rotate(20);
         //平移
-        canvas.translate(-(100 + 600 / 2), -(700 + 600 / 2));
-        canvas.drawBitmap(Utils.getAvatar(getResources(), 600), 100, 700, paint);
+        canvas.translate(-(100 + 500 / 2), -(700 + 500 / 2));
+        canvas.drawBitmap(Utils.getAvatar(getResources(), 500), 100, 700, paint);
 
     }
 }

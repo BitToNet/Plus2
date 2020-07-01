@@ -134,13 +134,13 @@ public class MainActivity extends AppCompatActivity {
                 view6.setTranslationX(-Utils.dp2px(100));
                 //用插值器做入场动画和加速动画
                 view6.animate()
-                        .translationX(Utils.dp2px(300))
+                        .translationX(Utils.dp2px(250))
                         .setDuration(2000)
                         .setInterpolator(new DecelerateInterpolator())
                         .start();
                 view6_2.setTranslationX(0);
                 view6_2.animate()
-                        .translationX(Utils.dp2px(300))
+                        .translationX(Utils.dp2px(250))
                         .setDuration(2000)
                         .setInterpolator(new AccelerateInterpolator())
                         .start();
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.bt7:
                 //用Evaluator对点对象做自定义轨迹的动画
                 Point pointStart = new Point(0, 0);
-                Point point = new Point((int)Utils.dp2px(400), (int)Utils.dp2px(400));
+                Point point = new Point((int)Utils.dp2px(300), (int)Utils.dp2px(400));
                 ObjectAnimator objectAnimator1 = ObjectAnimator.ofObject(view7, "point", new PointValueEvaluator(), pointStart,point);
                 objectAnimator1.setDuration(1000);
                 objectAnimator1.start();

@@ -8,12 +8,12 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.OverScroller;
 
 import androidx.annotation.Nullable;
 import androidx.core.view.GestureDetectorCompat;
-import androidx.core.view.ViewCompat;
 
 import com.example.plus2.Utils;
 
@@ -21,12 +21,12 @@ import com.example.plus2.Utils;
  * author : Qiu Long
  * e-mail : 502578360@qq.com
  * date   : 2020-06-30   14:03
- * desc   :
+ * desc   : 双向滑动,惯性滑动,定点缩放，多点触控（双指捏撑）
  */
-public class ScalableImageView extends View implements Runnable {
+public class ScalableImageView extends View {
     private static final float IMAGE_WIDTH = Utils.dp2px(300);
     //放大系数
-    private static final float OVER_SCALE_FACTOR = 1.5f;
+    private static final float OVER_SCALE_FACTOR = 2f;
 
     Bitmap bitmap;
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -39,7 +39,8 @@ public class ScalableImageView extends View implements Runnable {
     float bigScale;
     boolean big;
 
-    float scaleFraction; //0-1f 动画参数
+    //    float scaleFraction; //0-1f 动画参数
+    float currentScale; //1f--> 手指缩放的放大系数不一样，所以改了动画参数
     ObjectAnimator scaleAnimator;
 
     //android自带的双击监听，这两个都是一样的
@@ -50,6 +51,9 @@ public class ScalableImageView extends View implements Runnable {
     OverScroller scroller;
     //这个初始速度很慢
 //    Scroller scroller;
+    MyFlingRunner myFlingRunner = new MyFlingRunner();
+    //双指缩放
+    ScaleGestureDetector scaleDetector;
 
     public ScalableImageView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -92,10 +96,10 @@ public class ScalableImageView extends View implements Runnable {
                     offsetX = offsetX - distanceX;
                     offsetY = offsetY - distanceY;
                     //边界判断
-                    offsetX = Math.min(x,offsetX);
-                    offsetX = Math.max(-x,offsetX);
-                    offsetY = Math.min(y,offsetY);
-                    offsetY = Math.max(-y,offsetY);
+                    offsetX = Math.min(x, offsetX);
+                    offsetX = Math.max(-x, offsetX);
+                    offsetY = Math.min(y, offsetY);
+                    offsetY = Math.max(-y, offsetY);
                     invalidate();
                 }
                 return false;
@@ -112,19 +116,19 @@ public class ScalableImageView extends View implements Runnable {
             //参数 velocityX：速度
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                if(big){
+                if (big) {
                     scroller.fling(
                             //初始值
-                            (int)offsetX,(int)offsetY,
+                            (int) offsetX, (int) offsetY,
                             //速度
-                            (int)velocityX,(int)velocityY,
+                            (int) velocityX, (int) velocityY,
                             //边界
-                            -(int)(bitmap.getWidth() * bigScale - getWidth()) / 2,
-                            (int)(bitmap.getWidth() * bigScale - getWidth()) / 2,
-                            -(int)(bitmap.getHeight() * bigScale - getHeight()) / 2,
-                            (int)(bitmap.getHeight() * bigScale - getHeight()) / 2,
+                            -(int) (bitmap.getWidth() * bigScale - getWidth()) / 2,
+                            (int) (bitmap.getWidth() * bigScale - getWidth()) / 2,
+                            -(int) (bitmap.getHeight() * bigScale - getHeight()) / 2,
+                            (int) (bitmap.getHeight() * bigScale - getHeight()) / 2,
                             //超出的白框效果
-                            100,100);
+                            100, 100);
 //                for (int i = 10; i < 100; i+=10) {
 //                    postDelayed(new Runnable() {
 //                        @Override
@@ -135,7 +139,7 @@ public class ScalableImageView extends View implements Runnable {
 //                }
 
                     //下一帧刷新
-                    postOnAnimation(ScalableImageView.this);
+                    postOnAnimation(myFlingRunner);
                 }
 
 
@@ -156,6 +160,8 @@ public class ScalableImageView extends View implements Runnable {
             public boolean onDoubleTap(MotionEvent e) {
                 big = !big;
                 if (big) {
+                    offsetX = (e.getX() - getWidth() / 2f) - (e.getX() - getWidth() / 2f) * bigScale / smallScale;
+                    offsetY = (e.getY() - getHeight() / 2f) - (e.getY() - getHeight() / 2f) * bigScale / smallScale;
                     getScaleAnimator().start();
                 } else {
                     getScaleAnimator().reverse();
@@ -172,6 +178,37 @@ public class ScalableImageView extends View implements Runnable {
         });
 
         scroller = new OverScroller(context);
+        scaleDetector = new ScaleGestureDetector(context, new ScaleGestureDetector.OnScaleGestureListener() {
+            float initialScal;
+
+            //缩放过程中
+            @Override
+            public boolean onScale(ScaleGestureDetector detector) {
+                currentScale = initialScal * detector.getScaleFactor();//放大系数
+                currentScale = Math.min(currentScale, bigScale);
+                currentScale = Math.max(currentScale, smallScale);
+                if (currentScale > smallScale) {
+                    big = true;
+                } else {
+                    big = false;
+
+                }
+                invalidate();
+                return false;
+            }
+
+            @Override
+            public boolean onScaleBegin(ScaleGestureDetector detector) {
+                //缩放开始时，要获取这个放缩事件，返回true
+                initialScal = currentScale;
+                return true;
+            }
+
+            @Override
+            public void onScaleEnd(ScaleGestureDetector detector) {
+
+            }
+        });
     }
 
     @Override
@@ -188,27 +225,31 @@ public class ScalableImageView extends View implements Runnable {
             smallScale = (float) getHeight() / bitmap.getHeight();
             bigScale = (float) getWidth() / bitmap.getWidth() * OVER_SCALE_FACTOR;
         }
+        currentScale = smallScale;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if (big) {
-            canvas.translate(offsetX, offsetY);
-        } else {
-            offsetX = 0;
-            offsetY = 0;
-        }
-        float scale = smallScale + (bigScale - smallScale) * scaleFraction;
-        canvas.scale(scale, scale, getWidth() / 2, getHeight() / 2);
+        float scaleFraction = (currentScale - smallScale) / (bigScale - smallScale);
+        canvas.translate(offsetX * scaleFraction, offsetY * scaleFraction);
+
+//        float scale = smallScale + (bigScale - smallScale) * scaleFraction;
+        canvas.scale(currentScale, currentScale, getWidth() / 2, getHeight() / 2);
         canvas.drawBitmap(bitmap, originalOffsetX, originalOffsetY, paint);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         //使用双击要监听他的事件
-        return detector.onTouchEvent(event);
+//        return detector.onTouchEvent(event)||scaleDetector.onTouchEvent(event);
+        boolean result = scaleDetector.onTouchEvent(event);
+        if (!scaleDetector.isInProgress()) {
+            result = detector.onTouchEvent(event);
+
+        }
+        return result;
     }
 
 //    void refresh(){
@@ -220,34 +261,39 @@ public class ScalableImageView extends View implements Runnable {
 
     private ObjectAnimator getScaleAnimator() {
         if (scaleAnimator == null) {
-            scaleAnimator = ObjectAnimator.ofFloat(this, "scaleFraction", 0, 1);
+            scaleAnimator = ObjectAnimator.ofFloat(this, "currentScale", 0);
         }
+        //这两个值会改变
+        scaleAnimator.setFloatValues(smallScale, bigScale);
         return scaleAnimator;
     }
 
-    public float getScaleFraction() {
-        return scaleFraction;
+    public float getCurrentScale() {
+        return currentScale;
     }
 
-    public void setScaleFraction(float scaleFraction) {
-        this.scaleFraction = scaleFraction;
+    public void setCurrentScale(float currentScale) {
+        this.currentScale = currentScale;
         invalidate();
     }
 
-    @Override
-    public void run() {
+
+    private class MyFlingRunner implements Runnable {
+        @Override
+        public void run() {
 //        refresh();
-        //这个返回值是动画是否结束
-        if(scroller.computeScrollOffset()){
-            offsetX = scroller.getCurrX();
-            offsetY = scroller.getCurrY();
-            invalidate();
-            //下一帧还要执行
-            postOnAnimation(this);
-            //立刻去主线程执行
+            //这个返回值是动画是否结束
+            if (scroller.computeScrollOffset()) {
+                offsetX = scroller.getCurrX();
+                offsetY = scroller.getCurrY();
+                invalidate();
+                //下一帧还要执行
+                postOnAnimation(this);
+                //立刻去主线程执行
 //            post(this);
-            //自动兼容，旧系统用post，新系统用postOnAnimation
+                //自动兼容，旧系统用post，新系统用postOnAnimation
 //            ViewCompat.postOnAnimation(this,this);
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ public class SportsView extends View {
     private static final int CIRCLE_COLOR = Color.parseColor("#90A4AE");
     private static final int HIGHLIGHT_COLOR = Color.parseColor("#FF4081");
     private static final int RING_WIDTH = (int) Utils.dp2px(20);
-    private static final int RADIUS = (int) Utils.dp2px(150);
+    private static final int RADIUS = (int) Utils.dp2px(130);
 
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Rect rect = new Rect();

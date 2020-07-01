@@ -49,32 +49,32 @@ public class CameraView extends View {
         //绘制上半部分
         canvas.save();
         //裁剪
-        canvas.translate(left + 600 / 2, top + 600 / 2);
+        canvas.translate(left + 400 / 2, top + 400 / 2);
         canvas.rotate(-flipRotation);
         //画布沿x轴旋转
         camera.save();
         camera.rotateX(topFlip);
         camera.applyToCanvas(canvas);
         camera.restore();
-        canvas.clipRect(-600/2-200, -600/2-200, 600/2+200, 0);
+        canvas.clipRect(-400/2-200, -400/2-200, 400/2+200, 0);
         canvas.rotate(flipRotation);
-        canvas.translate(-(left + 600 / 2), -(top + 600 / 2));
-        canvas.drawBitmap(Utils.getAvatar(getResources(), 600), left, top, paint);
+        canvas.translate(-(left + 400 / 2), -(top + 400 / 2));
+        canvas.drawBitmap(Utils.getAvatar(getResources(), 400), left, top, paint);
         canvas.restore();
         //绘制下半部分
-        canvas.translate(left + 600 / 2, top + 600 / 2);
+        canvas.translate(left + 400 / 2, top + 400 / 2);
         canvas.rotate(-flipRotation);
         //画布沿x轴旋转
         camera.save();
         camera.rotateX(bottomFlip);
         camera.applyToCanvas(canvas);
         camera.restore();
-        canvas.clipRect(-600/2-200, 0, 600/2+200, 600/2+200);
+        canvas.clipRect(-400/2-200, 0, 400/2+200, 400/2+200);
         //旋转
         canvas.rotate(flipRotation);
         //平移
-        canvas.translate(-(left + 600 / 2), -(top + 600 / 2));
-        canvas.drawBitmap(Utils.getAvatar(getResources(), 600), left, top, paint);
+        canvas.translate(-(left + 400 / 2), -(top + 400 / 2));
+        canvas.drawBitmap(Utils.getAvatar(getResources(), 400), left, top, paint);
 
     }
     public float getTopFlip() {
