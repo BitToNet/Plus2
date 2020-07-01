@@ -26,6 +26,7 @@ import com.example.plus2.day08.ProvinceUtils;
 import com.example.plus2.day09.MaterialEditText;
 import com.example.plus2.day11.TouchView;
 import com.example.plus2.day12.ScalableImageViewActivity;
+import com.example.plus2.day13.MultiTouchView1Activity;
 
 import java.util.TimerTask;
 
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             , R.id.bt9
             , R.id.view10
             , R.id.bt10
+            , R.id.bt11
     })
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -166,6 +168,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.bt10:
                 Intent intent = new Intent(this, ScalableImageViewActivity.class);
+                startActivity(intent);
+            case R.id.bt11:
+                intent = new Intent(this, MultiTouchView1Activity.class);
                 startActivity(intent);
         }
     }
