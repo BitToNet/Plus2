@@ -90,6 +90,7 @@ public class MultiTouchView1 extends View {
                     originalOffsetX = offsetX;
                     originalOffsetY = offsetY;
                 }
+                break;
         }
         return true;
     }
