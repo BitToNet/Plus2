@@ -23,7 +23,37 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="640dp"
+                android:layout_height="400dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="互不干扰多点触控:多手指画板" />
+                <Button
+                    android:id="@+id/bt13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:text="进入" />
+
+                <RelativeLayout
+                    android:layout_marginTop="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.example.plus2.day13.MultiTouchView3
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="440dp"
                 android:background="#1111"
                 android:orientation="vertical">
 
@@ -44,8 +74,7 @@
                     android:layout_marginTop="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <ImageView
-                        android:src="@drawable/avatar_dog"
+                    <com.example.plus2.day13.MultiTouchView2
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
                 </RelativeLayout>
@@ -54,7 +83,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="640dp"
+                android:layout_height="440dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -74,8 +103,7 @@
                     android:layout_marginTop="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <ImageView
-                        android:src="@drawable/avatar_dog"
+                    <com.example.plus2.day13.MultiTouchView1
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
                 </RelativeLayout>
@@ -84,7 +112,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="640dp"
+                android:layout_height="540dp"
                 android:background="#1111"
                 android:orientation="vertical">
 
@@ -102,11 +130,10 @@
                     android:text="进入" />
 
                 <RelativeLayout
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="70dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <ImageView
-                        android:src="@drawable/avatar_dog"
+                    <com.example.plus2.day12.ScalableImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
                 </RelativeLayout>

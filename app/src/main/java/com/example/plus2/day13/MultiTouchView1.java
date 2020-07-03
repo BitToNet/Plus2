@@ -44,6 +44,7 @@ public class MultiTouchView1 extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
+                getParent().requestDisallowInterceptTouchEvent(true);
                 //拿到第一根手指的id
                 trackingPointerId = event.getPointerId(0);
                 //getX()默认为获取第一个手指的坐标，手指抬起坐标改变，但是id不会变

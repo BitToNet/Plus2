@@ -244,6 +244,7 @@ public class ScalableImageView extends View {
     public boolean onTouchEvent(MotionEvent event) {
         //使用双击要监听他的事件
 //        return detector.onTouchEvent(event)||scaleDetector.onTouchEvent(event);
+        getParent().requestDisallowInterceptTouchEvent(true);
         boolean result = scaleDetector.onTouchEvent(event);
         if (!scaleDetector.isInProgress()) {
             result = detector.onTouchEvent(event);

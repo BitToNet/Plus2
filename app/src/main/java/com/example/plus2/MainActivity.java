@@ -28,6 +28,7 @@ import com.example.plus2.day11.TouchView;
 import com.example.plus2.day12.ScalableImageViewActivity;
 import com.example.plus2.day13.MultiTouchView1Activity;
 import com.example.plus2.day13.MultiTouchView2Activity;
+import com.example.plus2.day13.MultiTouchView3Activity;
 
 import java.util.TimerTask;
 
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             , R.id.bt10
             , R.id.bt11
             , R.id.bt12
+            , R.id.bt13
     })
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -178,6 +180,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.bt12:
                 intent = new Intent(this, MultiTouchView2Activity.class);
+                startActivity(intent);
+                break;
+            case R.id.bt13:
+                intent = new Intent(this, MultiTouchView3Activity.class);
                 startActivity(intent);
                 break;
         }

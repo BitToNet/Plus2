@@ -61,6 +61,7 @@ public class MultiTouchView2 extends View {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_POINTER_DOWN:
             case MotionEvent.ACTION_POINTER_UP:
+                getParent().requestDisallowInterceptTouchEvent(true);
                 //getX()默认为获取第一个手指的坐标，手指抬起坐标改变，但是id不会变
                 //但是id会复用，第一个手指抬起，第二个手指的坐标改变为0，但是第一个手指再次落下，id会返还给他，并且第二根手指的坐标再次变为1
                 //第一个手指抬起，再有一根手指落下，他会默认这根手指是之前那根
