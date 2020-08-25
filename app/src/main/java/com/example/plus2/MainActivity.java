@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,8 +28,6 @@ import com.example.plus2.day12.ScalableImageViewActivity;
 import com.example.plus2.day13.MultiTouchView1Activity;
 import com.example.plus2.day13.MultiTouchView2Activity;
 import com.example.plus2.day13.MultiTouchView3Activity;
-
-import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,7 +63,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        //识别dubug和其他版本的技巧  第20课
+//        drawBadge(this);
     }
+
+
 
     @OnClick({R.id.bt1, R.id.bt2, R.id.bt3, R.id.bt4, R.id.bt5, R.id.bt6, R.id.bt7, R.id.bt8
             , R.id.bt9
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 animatorSet.start();
                 break;
             case R.id.bt4:
-                //组合动画PropertyValuesHolder，同时执行
+//             组合动画PropertyValuesHolder，同时执行
                 PropertyValuesHolder bottomFlipHolder = PropertyValuesHolder.ofFloat("bottomFlip", 0,45);
                 PropertyValuesHolder flipRotationHolder = PropertyValuesHolder.ofFloat("flipRotation", 0,360);
                 PropertyValuesHolder topFlipHolder = PropertyValuesHolder.ofFloat("topFlip", 0,-45);
