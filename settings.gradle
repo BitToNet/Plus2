@@ -1,2 +1,2 @@
-include ':app', ':lib'
+include ':app', ':lib', ':26_pluginnable_plugin', ':28_lib_processor', ':28_lib_annotations'
 rootProject.name='Plus2'

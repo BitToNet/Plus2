@@ -12,7 +12,7 @@ import com.example.plus2.R;
  * author : Qiu Long
  * e-mail : 502578360@qq.com
  * date   : 2020-08-24   09:52
- * desc   :
+ * desc   :....
  */
 public class MvpActivity extends AppCompatActivity implements Presenter.IView {
     private EditText et1;

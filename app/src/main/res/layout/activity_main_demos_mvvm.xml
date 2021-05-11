@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="loginViewModel"
+            type="com.example.plus2.demos.mvvm.vm.LoginViewModel" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<!--        <EditText-->
+<!--            android:id="@+id/et_name"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="请输入账户"-->
+<!--            android:addTextChangedListener="@{loginViewModel.nameInputListener"-->
+<!--            android:text="@{loginViewModel.userInfo.pwd}"/>-->
+<!--        <EditText-->
+<!--            android:id="@+id/et_password"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="请输入密码"-->
+<!--            android:addTextChangedListener="@{loginViewModel.pwdInputListener"-->
+<!--            android:text="@{loginViewModel.userInfo.name}"/>-->
+        <Button
+            android:text="登录"
+            android:id="@+id/login"
+            android:onClick="@{loginViewModel.loginClickListener}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</layout>

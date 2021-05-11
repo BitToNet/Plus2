@@ -29,9 +29,20 @@ import com.example.plus2.day13.MultiTouchView1Activity;
 import com.example.plus2.day13.MultiTouchView2Activity;
 import com.example.plus2.day13.MultiTouchView3Activity;
 
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.Authenticator;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.CertificatePinner;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.Route;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.view10)
@@ -62,6 +73,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        view9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         //识别dubug和其他版本的技巧  第20课
 //        drawBadge(this);
@@ -211,6 +229,62 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    public void okhttpDemo(){
+//        String hostname = "publicobject.com";
+//        CertificatePinner certificatePinner = new CertificatePinner.Builder()
+//                .add(hostname, "sha256/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=")
+//                .build();
+//        OkHttpClient client =new OkHttpClient.Builder()
+//                .certificatePinner(certificatePinner)
+//                .addInterceptor(new MyInterceptor() {
+//                    @Override
+//                    public Response intercept(Chain chain) throws IOException {
+//                        //前置工作
+//                        Response response = chain.proceed(chain.request());
+//                        //后置工作
+//                        return response;
+//                    }
+//                })
+//                .build();
+//        Request request = new Request.Builder()
+//                .url("https://" + hostname)
+//                .build();
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//
+//            }
+//        });
+
+        OkHttpClient client = new OkHttpClient();
+        client.newCall(new Request.Builder().url("http://api.github.com").build())
+                .enqueue(new okhttp3.Callback() {
+                    @Override
+                    public void onFailure(okhttp3.Call call, IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                    }
+                });
+
+        try {
+            Request request = new Request.Builder().url("http://api.github.com").build();
+            client.newCall(request).execute();
+            request.body();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 

@@ -518,7 +518,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="用Evaluator对点对象做自定义轨迹的动画" />
+                    android:text="用估值器Evaluator对点对象做自定义轨迹的动画" />
 
                 <Button
                     android:id="@+id/bt7"
