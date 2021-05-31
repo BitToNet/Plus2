@@ -3,6 +3,7 @@ package com.example.plus2.demos.handler;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.Message;
 import android.os.SystemClock;
 import android.util.Log;
@@ -57,6 +58,16 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         test();
+
+//        HandlerThread handlerThread = new HandlerThread("handlerThread");
+//        handlerThread.start();
+//        Handler handler = new Handler(handlerThread.getLooper()){
+//            @Override
+//            public void handleMessage(@NonNull Message msg) {
+//                super.handleMessage(msg);
+//            }
+//        };
+//        handlerThread.quitSafely();
     }
 
     private void test() {

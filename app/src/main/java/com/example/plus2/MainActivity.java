@@ -6,6 +6,8 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
+import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
         //识别dubug和其他版本的技巧  第20课
 //        drawBadge(this);
+
     }
 
 
