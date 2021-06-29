@@ -1,5 +1,8 @@
 package com.example.plus2.demos.design_mode.m4_mediator;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 /**
  * author : Qiu Long
  * e-mail : 502578360@qq.com
@@ -10,5 +13,11 @@ package com.example.plus2.demos.design_mode.m4_mediator;
  */
 public class Main {
     public static void main(String[] args){
+        ArrayList<String> a = new ArrayList<>();
+        Iterator<String> iterator = a.iterator();
+        while (iterator.hasNext()){
+            String next = iterator.next();
+            iterator.remove();
+        }
     }
 }

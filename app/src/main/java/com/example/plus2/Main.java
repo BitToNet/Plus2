@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
 
 /**
@@ -19,17 +20,46 @@ import java.util.function.BiConsumer;
  * desc   :
  */
 public class Main {
+    public static class MyData {
+        volatile int number = 0;
+        public void add() {
+            this.number = number + 1;
+        }
+    }
     public static void main(String[] args) {
 
 //        boolean b = judgePoint24(new int[]{3, 3, 8, 8});
 //        boolean b = judgePoint24my(new int[]{3, 3, 8, 8});
 //        System.out.println("==="+b);
-        int[] ints = {4,2,1,3};
-        ListNode listNode = new ListNode();
-        creatListNodeByArr(listNode, ints,0);
-        System.out.println(listNode.next.toString());
-        ListNode listNode1 = sortList(listNode);
-        System.out.println(listNode1.next.toString());
+
+//        int[] ints = {4,2,1,3};
+//        ListNode listNode = new ListNode();
+//        creatListNodeByArr(listNode, ints,0);
+//        System.out.println(listNode.next.toString());
+//        ListNode listNode1 = sortList(listNode);
+//        System.out.println(listNode1.next.toString());
+
+        MyData myData = new MyData();
+
+        new Thread(() -> {
+            System.out.println(Thread.currentThread().getName()+"\t come in");
+            try {
+                TimeUnit.SECONDS.sleep(2);
+                myData.add();
+                System.out.println(Thread.currentThread().getName()+"\t update number value :"+myData.number);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, "workThread").start();
+
+        //第2个线程，main线程
+        while (myData.number == 0){
+            //main线程还在找0
+        }
+        System.out.println(Thread.currentThread().getName()+"\t mission is over");
+        System.out.println(Thread.currentThread().getName()+"\t mission is over，main get number is:"+myData.number);
+
+
     }
     public static ListNode creatListNodeByArr(ListNode node, int[] arr, int size) {
         if(size<arr.length){

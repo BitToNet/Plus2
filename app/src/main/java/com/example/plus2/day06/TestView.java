@@ -51,6 +51,7 @@ public class TestView extends View {
         path.setFillType(Path.FillType.WINDING);
         canvas.drawPath(path,paint);
 
+
     }
 
 }

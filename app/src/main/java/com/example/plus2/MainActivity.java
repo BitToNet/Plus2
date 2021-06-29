@@ -9,6 +9,7 @@ import android.animation.ValueAnimator;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,8 @@ import com.example.plus2.day13.MultiTouchView2Activity;
 import com.example.plus2.day13.MultiTouchView3Activity;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,7 +47,9 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import okhttp3.Route;
+import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.view10)
@@ -85,7 +90,12 @@ public class MainActivity extends AppCompatActivity {
 
         //识别dubug和其他版本的技巧  第20课
 //        drawBadge(this);
+        HashMap<Object, Object> map = new HashMap<>();
+        map.put("","");
+        map.putIfAbsent("","");
 
+        LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+        linkedHashMap.put("","");
     }
 
 
@@ -292,8 +302,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //研究retrofit源码
-//        Resources.getSystem()
+//    public void retrofitDemo(){
+//    //研究retrofit源码
+//        Resources.getSystem();
 //
 //        Retrofit retrofit = new Retrofit.Builder()
 //                .baseUrl("")
@@ -306,14 +317,24 @@ public class MainActivity extends AppCompatActivity {
 //        //异步
 //        api.getRepos().enqueue(new Callback<ResponseBody>() {
 //            @Override
-//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//            public void onFailure(Call call, IOException e) {
 //
 //            }
 //
 //            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//            public void onResponse(Call call, Response response) throws IOException {
 //
 //            }
+//
+////            @Override
+////            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+////
+////            }
+////
+////            @Override
+////            public void onFailure(Call<ResponseBody> call, Throwable t) {
+////
+////            }
 //        });
 //        OkHttpClient client = new OkHttpClient();
 //        client.newCall(

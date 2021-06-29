@@ -72,7 +72,7 @@ public class Dashboard extends View {
         super.onDraw(canvas);
 
         //画线
-        //startAngle:起始角度；sweepAngle:扫过的角度
+        //startAngle:起始角度(开始位置沿x轴正方向)；sweepAngle:扫过的角度
         //userCenter:是否连连接中心，就是说画扇形还是画弧
         canvas.drawArc(
                 getWidth() / 2 - RADIUS,
