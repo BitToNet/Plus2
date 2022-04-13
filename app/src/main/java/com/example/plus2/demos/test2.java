@@ -10,4 +10,6 @@ package com.example.plus2.demos;
  */
 public class test2 {
     //3
+    //haha
+    //2
 }
