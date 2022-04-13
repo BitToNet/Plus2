@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(String s) {
                 Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(MainActivity.this, Main3Activity.class));
             }
         });
 

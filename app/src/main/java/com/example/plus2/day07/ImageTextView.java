@@ -47,17 +47,17 @@ public class ImageTextView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawBitmap(bitmap,getWidth()-Utils.dp2px(100),100,paint);
+        canvas.drawBitmap(bitmap, getWidth() - Utils.dp2px(100), 100, paint);
         String text = "文字自动换行： 使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转使用Camera做三维旋转";
         //第一行结束的位置
-        int index = paint.breakText(text,true,getWidth(),cutWidth);
-        canvas.drawText(text,0,index,0,50,paint);
+        int index = paint.breakText(text, true, getWidth(), cutWidth);
+        canvas.drawText(text, 0, index, 0, 50, paint);
         int oldIndex = index;
-        index = paint.breakText(text,index,text.length(),true,getWidth(),cutWidth);
-        canvas.drawText(text,oldIndex,oldIndex+index,0,50+paint.getFontSpacing(),paint);
+        index = paint.breakText(text, index, text.length(), true, getWidth(), cutWidth);
+        canvas.drawText(text, oldIndex, oldIndex + index, 0, 50 + paint.getFontSpacing(), paint);
         oldIndex = index;
-        index = paint.breakText(text,index,text.length(),true,getWidth()-Utils.dp2px(100),cutWidth);
-        canvas.drawText(text,oldIndex,oldIndex+index,0,50+paint.getFontSpacing()*2,paint);
+        index = paint.breakText(text, index, text.length(), true, getWidth() - Utils.dp2px(100), cutWidth);
+        canvas.drawText(text, oldIndex, oldIndex + index, 0, 50 + paint.getFontSpacing() * 2, paint);
 
 
         //spacingmult:空隙缩放，1不变，1.2扩大，0.8缩小

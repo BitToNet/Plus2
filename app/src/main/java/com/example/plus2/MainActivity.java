@@ -6,8 +6,6 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
-import android.app.Service;
-import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Point;
@@ -31,6 +29,9 @@ import com.example.plus2.day12.ScalableImageViewActivity;
 import com.example.plus2.day13.MultiTouchView1Activity;
 import com.example.plus2.day13.MultiTouchView2Activity;
 import com.example.plus2.day13.MultiTouchView3Activity;
+import com.example.plus2.httpdemo.BaseBean;
+import com.example.plus2.httpdemo.GitHubService;
+import com.example.plus2.httpdemo.RetrofitManager;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -39,17 +40,19 @@ import java.util.LinkedHashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.Authenticator;
+import io.reactivex.Observer;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.CertificatePinner;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-import okhttp3.Route;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.view10)
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
     CircleView view2;
     @BindView(R.id.view1)
     ImageView view1;
+    private Disposable disposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -302,53 +306,95 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//    public void retrofitDemo(){
-//    //研究retrofit源码
-//        Resources.getSystem();
-//
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl("")
-//                .addConverterFactory(Gson)
-//                .build();
-//
-//        GitHubService api = retrofit.create(GitHubService.class);
-//
-////        api.getRepos().execute();//同步
-//        //异步
-//        api.getRepos().enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//
-//            }
-//
-////            @Override
-////            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-////
-////            }
-////
-////            @Override
-////            public void onFailure(Call<ResponseBody> call, Throwable t) {
-////
-////            }
-//        });
-//        OkHttpClient client = new OkHttpClient();
-//        client.newCall(
-//                new Request.Builder().url("").build())
-//                .enqueue(new okhttp3.Callback() {
-//                    @Override
-//                    public void onFailure(okhttp3.Call call, IOException e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
-//
-//                    }
-//                });
-//    }
+    public void retrofitDemo(){
+    //研究retrofit源码
+        Resources.getSystem();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        GitHubService api = retrofit.create(GitHubService.class);
+
+//        api.getRepos().execute();//同步
+        //异步
+        api.getRepos().enqueue(new retrofit2.Callback<ResponseBody>() {
+            @Override
+            public void onResponse(retrofit2.Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
+        OkHttpClient client = new OkHttpClient();
+        client.newCall(
+                new Request.Builder().url("").get().build())
+                .enqueue(new okhttp3.Callback() {
+                    @Override
+                    public void onFailure(okhttp3.Call call, IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                    }
+                });
+
+        RetrofitManager.getInstance()
+                .getApiService()
+                .getRepos()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(BaseBean bean) {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+        RetrofitManager.getInstance()
+                .getApiService()
+                .getDemo()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<BaseBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposable = d;
+                    }
+
+                    @Override
+                    public void onSuccess(BaseBean value) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        disposable.dispose();
+    }
+
 }
